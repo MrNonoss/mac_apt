@@ -2,9 +2,33 @@
 [![Latest version](https://img.shields.io/badge/version-v0.9-blue)](https://github.com/ydkhatri/mac_apt/releases/tag/v0.9)
 [![status](https://img.shields.io/badge/status-stable-green)]()
 
-[![Latest version](https://img.shields.io/badge/version-v0.9.dev-blue)](https://github.com/ydkhatri/mac_apt/releases/tag/v0.9.dev)
-[![status](https://img.shields.io/badge/status-development-orange)]()
+## This is just a docker version of mac_apt - macOS (and iOS) Artifact Parsing Tool
 
+#### How to get the image?
+If you want to build, just clone the repo, enter and build:
+```
+git clone https://github.com/MrNonoss/mac_apt.git
+cd mac_apt
+docker build -t mac_apt .
+```
+
+If you don't want to bother buildind, just download the pre built image (1,2Go):
+```
+docker pull mrnonoss/mac_apt:20201228
+```
+
+#### How to use?
+running the image will provide the helper:
+```
+docker run mrnonoss/mac_apt:20201228
+```
+
+To craft you own command, you will have to mount at least working directory containing your source, for exemple:
+```
+docker run -ti -v /mnt/evidence/:/mnt/evidence mrnonoss/mac_apt:20201228 python mac_apt/mac_apt.py {enter your mac_apt command here}
+```
+
+#### What is it?
 mac_apt is a DFIR (Digital Forensics and Incident Response) tool to process Mac computer full disk images (**or _live_ machines**) and extract data/metadata useful for forensic investigation. It is a python based framework, which has plugins to process individual artifacts (such as Safari internet history, Network interfaces, Recently accessed files & volumes, ..)
 
 mac_apt now also includes **[ios_apt](https://swiftforensics.com/2020/12/introducing-iosapt-ios-artifact-parsing.html)**, for processing ios images.
